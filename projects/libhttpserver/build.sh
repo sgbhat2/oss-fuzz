@@ -25,14 +25,10 @@ make install
 cd $SRC/libhttpserver
 ./bootstrap
 mkdir build; cd build
-../configure
+../configure --enable-shared=no
 make
 make install
-#echo "/usr/local/lib/" > /etc/ld.so.conf.d/httpserver.conf
-#ldconfig -v
 
 cd ../test/fuzz
-$CXX $CXXFLAGS -std=c++11 basic_fuzzer.cc -o $OUT/basic_fuzzer $LIB_FUZZING_ENGINE /usr/local/lib/libhttpserver.a -Wl,-Bstatic -lmicrohttpd -Wl,-Bdynamic -lgnutls -lnettle -ltasn1 -lidn
-#$CXX $CXXFLAGS -std=c++11 basic_fuzzer.cc -o $OUT/basic_fuzzer $LIB_FUZZING_ENGINE -Wl,-rpath -Wl,/usr/local/lib  -lhttpserver
-#patchelf --set-rpath '/usr/local/lib' $OUT/basic_fuzzer
-#ldd $OUT/basic_fuzzer
+$CXX $CXXFLAGS -std=c++11 basic_fuzzer.cc -o $OUT/basic_fuzzer $LIB_FUZZING_ENGINE /usr/local/lib/libhttpserver.a /usr/local/lib/libmicrohttpd.a -lgnutls
+cp *.zip $OUT

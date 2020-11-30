@@ -1,3 +1,6 @@
 homepage: "https://github.com/etr/libhttpserver"
 language: c++
-primary_contact: "sebastiano@hey.com"
+primary_contact: "electrictwister2000@gmail.com"
+auto_ccs: "shilpa.bhat11@gmail.com"
+sanitizers:
+ - address

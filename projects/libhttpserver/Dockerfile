@@ -18,6 +18,6 @@ FROM gcr.io/oss-fuzz-base/base-builder
 RUN apt-get update && apt-get install -y make autoconf automake libtool
 RUN apt-get install -y libgnutls-dev wget curl
 RUN wget --no-check-certificate https://ftpmirror.gnu.org/libmicrohttpd/libmicrohttpd-latest.tar.gz
-RUN git clone --depth 1 --branch fuzzing https://github.com/sgbhat2/libhttpserver.git libhttpserver
+RUN git clone --depth 1 --branch fuzzing_PR https://github.com/sgbhat2/libhttpserver.git libhttpserver
 WORKDIR libhttpserver
 COPY build.sh $SRC/
